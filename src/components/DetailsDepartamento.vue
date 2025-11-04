@@ -19,15 +19,11 @@
             </tbody>
         </table>
         <router-link class="btn btn-secondary" to="/">Volver</router-link>
-        <button class="btn btn-danger ms-2" @click="eliminar()">Eliminar</button>
+        <router-link class="btn btn-danger ms-2" :to="'/delete/' + departamento.numero">Eliminar</router-link>
     </div>
 </template>
 
 <script>
-
-import DepartamentosService from './../services/DepartamentosService';
-
-const service = new DepartamentosService();
 
 export default {
     name: "DetailsDepartamento",
@@ -47,16 +43,6 @@ export default {
         this.departamento.localidad = localidad;
 
         this.status = true;
-    },
-    methods: {
-        confirmarEliminar() {
-
-        },
-        eliminar() {
-            service.deleteDepartamentoById(this.$route.params.numero).then(() => {
-                this.$router.push("/");
-            });
-        }
     }
 }
 </script>
